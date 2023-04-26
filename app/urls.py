@@ -10,6 +10,12 @@ urlpatterns = [
     path('Users', views.Userss,
          name="Users"),
 
+    path('login/', views.loginUser, name="login"),
+
+    path('logout/', views.logoutUser, name="logout"),
+    
+    path('register/', views.registerUser, name="register"),
+
     path('Users_Registration', views.Users_Registration,
          name="Users_Registration"),
 
