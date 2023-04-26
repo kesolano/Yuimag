@@ -1,0 +1,76 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<style>
+    .image-thumbail {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .list-group-item a {
+        text-decoration: none;
+        color: black;
+    }
+</style>
+
+<body class="m-5">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                {% if request.user.is_authenticated %}
+                <p>Bienvenido a Yuimag {{request.user}}</p>
+                {% endif %}
+                <div class="card">
+                    <div class="card-header">
+                        Categorias
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="{% url 'gallery' %}">Toda la galería</a>
+                        </li>
+                        {% for category in categories %}
+                        <li class=" list-group-item">
+                            <a href="{% url 'gallery' %}?category={{category.name}}">
+                                {{category.name}}
+                            </a>
+                        </li>
+                        {% endfor %}
+
+
+                        <a href="{% url 'add' %}" class="btn btn-dark btn-block btn-sm m-1"> Agregar una foto</a>
+                        
+                        
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+
+                    {% for photo in photos %}
+                    <div class="col-md-4">
+                        <div class="card my-2">
+                            <img class="image-thumbail" src="{{photo.image.url}}" alt="Card image cap">
+
+                            <div class="card-body">
+                                <small>Category: {{photo.category.name}}</small>
+                            </div>
+                            <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">Vista</a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <h3> </h3>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+{% endblock %}
