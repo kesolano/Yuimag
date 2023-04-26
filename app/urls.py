@@ -28,8 +28,5 @@ urlpatterns = [
 
     path('photo/<str:pk>/', views.viewPhoto, name="photo"),
 
-    path('gallery/Delete_Pic/', views.Delete_Pic,
-         name="Delete_Pic"),
-
     
 ]

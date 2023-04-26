@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-
 class Users_listt(models.Model):
 
     email = models.EmailField()
