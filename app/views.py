@@ -3,6 +3,7 @@ from .forms import UserForm
 from .models import Users_listt, Category, Photo
 
 
+
 # Create your views here.
 # Input parameter: a request object that contains information about the incoming HTTP request.
 # Output: renders a HTML template named home.html using the render() function provided by the Django framework.
@@ -80,8 +81,16 @@ def Delete_User(request, id):
 
 def gallery(request):
 
+    category = request.GET.get("category")
+    if category == None:
+        photos = Photo.objects.all()
+    else:
+        photos = Photo.objects.filter(category__name__contains=category)
+
+
+
     categories = Category.objects.all()
-    photos = Photo.objects.all()
+    
 
     context = {"categories": categories, "photos": photos}
     return render(request, 'app/gallery.html', context)

@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'storages',
+
 ]
 
 MIDDLEWARE = [
@@ -124,10 +126,17 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),
                     )
+
+AWS_QUERYSTRING_AUTH = False
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = "AKIARZYWQ2IPPNTWC6WG"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_STORAGE_BUCKET_NAME = "yuimag"
+
