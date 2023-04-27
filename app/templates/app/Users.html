@@ -6,36 +6,36 @@
 
 <body>
 
-        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
-            <h1>Listado de usuarios</h1>
-            <div class="table-responsive py-2">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Nombre de usuario</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Correo</th>
-                            <th colspan="2">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for c in usuarios %}
-                        <tr>
-                            
-                            <td>{{c.username}}</td>
-                            <td>{{c.fname}}</td>
-                            <td>{{c.lname}}</td>
-                            <td>{{c.email}}</td>
-                            <td><a href="Edit_User/{{c.username}}" class="btn btn-info">Editar</a></td>
-                            <td><a href="Delete/{{c.username}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h1>Listado de usuarios</h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre de usuario</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in usuarios %}
+                    <tr>
+
+                        <td>{{c.username}}</td>
+                        <td>{{c.fname}}</td>
+                        <td>{{c.lname}}</td>
+                        <td>{{c.email}}</td>
+                        <td><a href="Edit_User/{{c.id}}/" class="btn btn-info">Editar</a></td>
+                        <td><a href="Delete_User/{{c.id}}/" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
-    
+    </div>
+
 
 </body>
 

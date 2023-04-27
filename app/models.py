@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
 class Users_listt(models.Model):
 
     email = models.EmailField()
@@ -10,7 +11,6 @@ class Users_listt(models.Model):
     fname = models.CharField(max_length=50)
     lname = models.CharField(max_length=50)
     subscribed = models.BooleanField(default=False)
-
 
     def __str__(self):
         text = "{0} ({1})"
@@ -20,12 +20,6 @@ class Users_listt(models.Model):
 
 class Category(models.Model):
 
-    class Meta:
-        verbose_name = 'Category'
-        verbose_name_plural = 'Categories'
-
-    user = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=100, null=True, blank=False)
 
     def __str__(self):
@@ -33,9 +27,6 @@ class Category(models.Model):
 
 
 class Photo(models.Model):
-    class Meta:
-        verbose_name = 'Photo'
-        verbose_name_plural = 'Photos'
 
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True)
