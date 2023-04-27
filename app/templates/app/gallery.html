@@ -14,29 +14,40 @@
         text-decoration: none;
         color: black;
     }
+    .left-align {
+  text-align: left;
+}
 </style>
 
-<body class="m-5">
+    &nbsp&nbsp&nbsp
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    &nbsp&nbsp&nbsp
 
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                {% if request.user.is_authenticated %}
-                <p>Bienvenido a Yuimag {{request.user}}</p>
-                {% endif %}
+                
                 <div class="card">
                     <div class="card-header">
-                        Categorias
+                        Galería
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <a href="{% url 'gallery' %}">Toda la galería</a>
+                            <a href="{% url 'gallery' %}" class="btn btn-outline-dark btn-sm m-1">Toda la galería</a>
                         </li>
+                        <div class="card-header">
+                            Categorias
+                        </div>
                         {% for category in categories %}
+                        <div >
+                            <br>
+                        </div>
                         <li class=" list-group-item">
-                            <a href="{% url 'gallery' %}?category={{category.name}}">
-                                {{category.name}}
-                            </a>
+
+                            <a  href="{% url 'gallery' %}?category={{category.name}}" class="btn btn-outline-dark btn-sm m-1"> {{category.name}}</a>
+                            
+                            <a href="{% url 'Delete_Category' category.id %}" class="btn btn-outline-dark btn-sm m-1">Eliminar</a> 
+                            
                         </li>
                         {% endfor %}
 
@@ -60,17 +71,17 @@
                                 <small>Category: {{photo.category.name}}</small>
                             </div>
                             <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">Vista</a>
+                            <td><a href="/Delete_Image/{{photo.id}}/" class="btn btn-outline-dark btn-sm m-1">Eliminar</a></td>
+
                         </div>
                     </div>
                     {% empty %}
-                    <h3> </h3>
+                    <h3> No hay fotos en la galería, sube tu primera foto: </h3>
                     {% endfor %}
 
                 </div>
             </div>
         </div>
     </div>
-
-</body>
 
 {% endblock %}

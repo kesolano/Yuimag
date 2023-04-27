@@ -27,4 +27,10 @@ urlpatterns = [
 
     path('photo/<str:pk>/', views.viewPhoto, name="photo"),
 
+    path('Delete_Image/<int:id>/', views.Delete_Image,
+         name="Delete_Image"), 
+
+    path('Delete_Category/<int:id>/', views.Delete_Category,
+         name="Delete_Category"),
+
 ]

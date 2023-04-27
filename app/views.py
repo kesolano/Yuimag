@@ -25,6 +25,7 @@ def Users_Registration(request):
         if newForm.is_valid():
             newForm.save()
             data["mensaje"] = "Registro exitoso"
+            return redirect('Users')
         else:
             data["mensaje"] = "Hubo un problema, intentalo nuevamente"
             data["form"] = newForm
@@ -65,7 +66,7 @@ def Edit_list_user(request, id):
     usuario.lname = lname
     usuario.email = email
     usuario.save()
-    return redirect("/")
+    return redirect('Users')
 
 
 # Input parameters: a request object that contains information about the incoming HTTP request, and a username string that represents the username of the user to be deleted.
@@ -76,7 +77,7 @@ def Delete_User(request, id):
 
     usuario = Users_listt.objects.get(pk=id)
     usuario.delete()
-    return redirect("/")
+    return redirect('Users')
 
 
 def gallery(request):
@@ -136,3 +137,17 @@ def addPhoto(request):
 
     context = {'categories': categories}
     return render(request, 'app/add.html', context)
+
+
+def Delete_Category(request, id):
+    category = Category.objects.get(pk=id) 
+    category.delete()
+    return redirect('gallery')
+
+
+def Delete_Image(request, id):
+
+    usuario = Photo.objects.get(pk=id)
+    usuario.delete()
+    return redirect('gallery')
+
