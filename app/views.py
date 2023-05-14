@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import UserForm
 from .models import Users_listt, Category, Photo
+import requests
+from django.http import HttpResponse
 
 
 
@@ -150,4 +152,18 @@ def Delete_Image(request, id):
     usuario = Photo.objects.get(pk=id)
     usuario.delete()
     return redirect('gallery')
+
+
+def enviar_correo(request):
+    # Configurar los parámetros del correo electrónico
+    subject = 'Nueva imagen cargada en S3'
+    body = 'Se ha cargado una nueva imagen en el bucket S3.'
+
+    # Enviar una solicitud POST a la API Lambda
+    url = 'https://jzs533cx6i.execute-api.us-east-2.amazonaws.com/API'
+    data = {'subject': subject, 'body': body}
+    response = requests.post(url, json=data)
+
+    # Devolver la respuesta de la API Lambda
+    return HttpResponse(response.content)
 
