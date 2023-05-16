@@ -32,7 +32,4 @@ urlpatterns = [
 
     path('Delete_Category/<int:id>/', views.Delete_Category,
          name="Delete_Category"),
-
-    path('enviar-correo/', views.enviar_correo, name='enviar_correo'),
-
 ]
